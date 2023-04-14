@@ -28,6 +28,7 @@ body {
     background-color: $backgroundwhite;
   }
   transition: $transitionBG, $transitionColors;
+  overflow-x: hidden;
 
 }
 

@@ -37,9 +37,7 @@ nav {
   position: relative;
   transition: padding 0.3s ease-in-out;
   
-  @include mediaQuery(367px) {
-    padding: 15px 25px;
-  }
+  padding: 15px 25px;
 
   @include mediaQuery(992px) {
     padding: 20px 90px;
@@ -51,6 +49,9 @@ nav {
 
   #logo {
     font-size: 1.4rem;
+    @include mediaQueryMinMax(300px, 780px) {
+      font-size: 1.1rem;
+    }
     a {
       color: $mainblue !important;
       span {
@@ -76,6 +77,9 @@ nav {
     #mode__icon,
     .mobile__search__icon {
       font-size: 22px;
+      @include mediaQueryMinMax(300px, 780px) {
+        font-size: 15px;
+      }
     }
   }
 }
