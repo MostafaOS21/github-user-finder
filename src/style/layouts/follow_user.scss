@@ -1,0 +1,76 @@
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+// Variables
+@use "../variables/colors.scss" as *;
+
+.usersGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mediaQueryMinMax(300px, 1024px) {
+    grid-template-columns: 1fr;
+  }
+
+  gap: 15px;
+
+  .user {
+    display: flex;
+    align-items: center;
+    background-color: $navybluelight;
+    gap: 15px;
+    border-radius: 8px;
+    padding: 15px 20px;
+    .user__avatar {
+      @include circle(50px);
+      overflow: hidden;
+      object-fit: cover;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .user__name {
+      flex: 1;
+      color: $mainwhite;
+    }
+
+    a {
+      @include circle(40px);
+      @include center-flex;
+      color: $mainwhite;
+      background-color: $navybluelittlelight;
+      transition: $transitionBG;
+
+      &:hover {
+        background-color: $mainbluehover;
+      }
+    }
+  }
+}
+
+// Light mode
+body.light {
+  .usersGrid {
+.user {
+      background-color: $darkwhite;
+      .user__name {
+        flex: 1;
+        color: $navybluedark;
+      }
+  
+      a {
+        color: $navybluedark;
+        background-color: $bluelight;
+
+        &:hover {
+          background-color: $mainbluehover;
+        }
+      }
+    }
+  }
+}

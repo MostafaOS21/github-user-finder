@@ -1,0 +1,31 @@
+
+// Global Rules
+@use "./style/global_rules.scss";
+
+// Navbar
+@use "./style/layouts/nav.scss";
+
+// Profile
+@use "./style/layouts/profile.scss";
+
+// User Details
+@use "./style/layouts/user_details.scss";
+
+// User Tabs
+@use "./style/layouts/user_tabs.scss";
+
+// Empty or no existed username
+@use "./style/layouts/emptyUsername.scss";
+
+// Users
+@use "./style/layouts/follow_user.scss";
+
+//////
+/// Data Loader
+@use "./style/loaders/data_loading.scss";
+
+// Repo Loader
+@use "./style/loaders/repo__loading.scss";
+
+// Followers Loader
+@use "./style/loaders/follows_loading.scss";

@@ -1,0 +1,37 @@
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+// Variables
+@use "../variables/colors.scss" as *;
+
+.signel__follow {
+  @include animate-load('dark');
+  .user__avatar,
+  .single__line {
+    background-color: $navybluelittlelight;
+    transition: $transitionBG;
+    @include animate-load('dark');
+  }
+  
+  .single__line {
+    height: $minLoaderLineHeight;
+    width: 150px;
+    border-radius: 8px;
+  }
+}
+
+body.light {
+  .signel__follow {
+    @include animate-load('light');
+
+    .user__avatar,
+    .single__line {
+      background-color: $mainwhite;
+      @include animate-load('light');
+    }
+    
+  }
+}

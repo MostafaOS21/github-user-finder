@@ -1,0 +1,76 @@
+// Colors
+@use "../variables/colors.scss" as *;
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mediaQuery($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mediaQueryMinMax($min, $mix) {
+  @media (min-width: $min) and (max-width: $mix) {
+    @content;
+  }
+}
+
+@mixin column-flex($gap, $isCenter) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+
+  @if $isCenter == true {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin circleBtn {
+  padding: 12px;
+  @include center-flex;
+  border-radius: 50%;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+
+@mixin pseudo-start {
+  position: absolute;
+  content: '';
+}
+
+@mixin animate-load($mod) {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    @include pseudo-start;
+    height: 300vh;
+    width: 300px;
+    top: -100%;
+    @if $mod == 'dark' {
+      background: linear-gradient(to left, transparent 10%, $navybluelittlelight, transparent 90%);
+    } @else if $mod == 'light' {
+      background: linear-gradient(to left, transparent 10%, $bluelight, transparent 90%);
+    }
+    animation: animate-load-dark 2.5s linear infinite;
+  }
+
+  @keyframes animate-load-dark {
+    from {
+      left: -500%;
+    }
+
+    to {
+      left: 500%;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+#user_profile {
+  position: fixed;
+  padding-top: 90px;
+  @include mediaQueryMinMax(300px, 1024px) {
+    position: unset;
+  }
+  @include column-flex(5px, true);
+  // Avatar
+  #avatar {
+    overflow: hidden;
+    @include circle(240px);
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  // User Info
+  #userInfo {
+    @include mediaQueryMinMax(300px, 1024px) {
+      text-align: center;
+    }
+
+    .github__info {
+      color: $mainwhite;
+      .name {
+        font-size: 1.4rem;
+        margin-bottom: 3px;
+      }
+
+      .username {
+        color: $mainblue;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .bio {
+        margin-top: 10px;
+        width: 250px;
+        font-size: 18px;
+      }
+
+      a {
+        margin-top: 10px;
+        background-color: $navybluelight;
+        color: $mainblue;
+        padding: 10px 0;
+        display: block;
+        text-align: center;
+        border-radius: $mainradius;
+        transition: $transitionBG;
+        width: 258px;
+      }
+      a:hover {
+        background-color: $navybluehover;
+      }
+    }
+  }
+
+  // Social Accounts
+  .social_accounts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+    
+    a {
+      color: $mainwhite;
+      @include center-flex;
+      gap: 5px;
+      width: fit-content;
+      .social__icon {
+        font-size: 16px;
+      }
+    }
+  }
+
+  // Numberic Stats
+  .numberic__stats {
+    @include column-flex(3px, false);
+    div {
+      display: flex;
+      gap: 8px;
+      color: rgb(161, 161, 161);
+      span {
+        color: $darkwhite;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+body.light {
+  #user_profile {
+    // User Info
+    #userInfo {
+      .github__info {
+        color: $navybluedark;
+
+        .username {
+          color: $mainblue;
+        }
+        a {
+          margin-top: 10px;
+          background-color: $darkwhite;
+          color: $mainblue;
+        }
+
+        a:hover {
+          background-color: $whitehover;
+        }
+      }
+    }
+
+    // Social Accounts
+  .social_accounts {
+    a {
+      color: $navybluedark
+    }
+  }
+  }
+
+  // Numberic Stats
+  .numberic__stats {
+    @include column-flex(3px, false);
+    div {
+      span {
+        color: $navybluedark !important;
+      }
+    }
+  }
+}

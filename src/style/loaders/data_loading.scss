@@ -1,0 +1,84 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Mixins
+@use "../helpers/mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+#data__loading {
+  padding-top: 90px;
+
+  .profile__load {
+    width: 350px;
+    height: 100vh;
+  }
+
+  .avatar {
+    @include circle(230px);
+    background-color: $navybluelight;
+    transition: $transitionBG;
+  }
+
+  .avatar,
+  .name__load,
+  .line__1,
+  .line__2,
+  .line__3 {
+    @include animate-load('dark');
+  }
+
+  .name__load,
+  .line__1,
+  .line__2,
+  .line__3 {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 190px;
+    height: $loaderLineHeight;
+    background-color: $navybluelight;
+    border-radius: $loaderRadius;
+    transition: $transitionBG;
+  }
+
+  .bio__load {
+    .line__1,
+    .line__2,
+    .line__3 {
+      margin: 10px 0 0;
+      height: $minLoaderLineHeight;
+    }
+
+    .line__1 {
+      width: 220px;
+    }
+
+    .line__2 {
+      width: 280px;
+    }
+
+    .line__3 {
+      width: 120px;
+    }
+  }
+
+}
+
+
+// Light mode
+body.light {
+  #data__loading {
+    .avatar,
+    .name__load,
+    .line__1,
+    .line__2,
+    .line__3 {
+      @include animate-load('light');
+      background-color: $darkwhite;
+    }
+  
+  
+  }
+}

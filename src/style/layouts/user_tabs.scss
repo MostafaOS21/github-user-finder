@@ -1,0 +1,27 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Repo Tap
+@use "./repo_tab.scss";
+
+#tabsContainer {
+  padding-top: 25px;
+  // Tabs isn't found
+  .tab__not__found {
+    text-align: center;
+    font-size: 1.4rem;
+    color: $mainwhite;
+    .error__icon {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+// Light mode
+body.light {
+  #tabsContainer {
+    .tab__not__found {
+      color: $navybluedark;
+    }
+  }
+}

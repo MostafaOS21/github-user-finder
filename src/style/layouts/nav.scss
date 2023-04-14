@@ -1,0 +1,105 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Search Bar
+@use "./search_bar.scss";
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  background-color: $navybluedark;
+  transition: $transitionBG;
+  
+  &.active {
+    nav {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+body.light {
+  header {
+    background-color: $mainwhite;
+  }
+}
+
+//
+
+nav {
+  position: relative;
+  transition: padding 0.3s ease-in-out;
+  
+  @include mediaQuery(367px) {
+    padding: 15px 25px;
+  }
+
+  @include mediaQuery(992px) {
+    padding: 20px 90px;
+  }
+
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  #logo {
+    font-size: 1.4rem;
+    a {
+      color: $mainblue !important;
+      span {
+        color: $mainwhite;
+        transition: $transitionColors;
+      }
+    }
+
+    flex: 1;
+  }
+
+  span.mode, 
+  .mobile__search {
+    cursor: pointer;
+    color: $mainwhite;
+    transition: $transitionBG ,$transitionColors;
+    background-color: $navybluelight;
+    @include circleBtn;
+
+    &:hover {
+      background-color: $navybluehover;
+    }
+    #mode__icon,
+    .mobile__search__icon {
+      font-size: 22px;
+    }
+  }
+}
+
+// Dark Mode
+body.light {
+  nav {
+    #logo {
+      a {
+        span {
+          color: $navybluedark !important;
+        }
+      }
+  
+    }
+
+    span.mode, 
+    .mobile__search {
+      background-color: $darkwhite;
+      color: $navybluedark;
+
+      &:hover {
+        background-color: $whitehover;
+      }
+    }
+  }
+}

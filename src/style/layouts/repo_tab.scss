@@ -1,0 +1,105 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+
+.repo__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 450px));
+  @include mediaQueryMinMax(300px, 1024px) {
+    grid-template-columns: 1fr;
+  }
+  gap: 15px;
+  .repo {
+    @include column-flex(0, false);
+    justify-content: space-between;
+    background-color: $navybluelittlelight;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: $transitionBG;
+    .text,
+    .stats {
+      padding: 20px;
+    }
+
+    .text {
+      position: relative;
+      font-weight: 400;
+      .repo__name {
+        font-size: 1.2rem;
+        color: $mainwhite;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        padding: 15px 0;
+        color: $gray;
+      }
+
+      .visibility {
+        position: absolute;
+        color: $gray;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.7rem;
+        top: 17px;
+        right: 22px;
+        border: 2px solid $navybluedark;
+        padding: 3px 8px;
+        border-radius: 5px;
+        transition: border 0.2s ease-in-out;
+      }
+    }
+
+    .stats {
+      background-color: $navybluelight;
+      display: flex;
+      gap: 22px;
+      color: $gray;
+      transition: $transitionBG;
+      span {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 0.8rem;
+        gap: 3px;
+        .stat__icon {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+
+// Light mode
+body.light {
+  .repo__grid {
+    .repo {
+      background-color: $bluelight;
+      .text {
+        .repo__name {
+          color: $navybluedark;
+        }
+      }
+
+      .text {
+        .visibility {
+          border-color: $gralight;
+        }
+      }
+  
+      .stats {
+        background-color: $gralight;
+        color: $gray;
+      }
+    }
+  }
+}

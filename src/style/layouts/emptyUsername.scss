@@ -1,0 +1,16 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+
+#emptyUsername {
+  text-align: center;
+  color: $mainwhite;
+  padding-top: 100px;
+  font-size: 1rem;
+}
+
+body.light {
+  #emptyUsername{
+    color: $navybluelight;
+  }
+}

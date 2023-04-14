@@ -1,0 +1,132 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Mixins
+@use "../helpers//mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+#searchBar {
+  
+  form {
+    width: fit-content;
+    background-color: $navybluelight;
+    padding-left: 20px;
+    height: 48px;
+
+    border: 2px solid transparent;
+    transition: border 0.3s ease-in-out, $transitionBG;
+    &.focus {
+      border-color: $mainblue;
+    }
+  
+    border-radius: 40px;
+    @include center-flex;
+    gap: 15px;
+
+    @include mediaQueryMinMax(300px, 780px) {
+      width: 260px;
+      justify-content: space-between;
+      padding-right: 1px;
+    }
+  
+  
+    input {
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      color: $mainwhite;
+  
+      &::placeholder {
+        color: #677284;
+      }
+    }
+  
+    button {
+      background-color: $mainblue;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 40px;
+      height: 100%;
+      font-weight: 500;
+      transition: $transitionBG;
+  
+      &:hover {
+        background-color: $mainbluehover;
+      }
+    }
+  
+    .search__icon {
+      padding: 10px 0;
+      color: $mainwhite;
+    }
+  }
+
+  &.mobile__view {
+    position: absolute;
+    top: -300px;
+    left: -50%;
+    transform: translateX(50%);
+    width: 100%;
+    height: 100%;
+    @include center-flex;
+    justify-content: space-around;
+    transition: top 0.2s ease-in-out;
+    background-color: rgba($color: $navybluedark, $alpha: 0.9);
+    gap: 25px;
+    &.active {
+      top: 0;
+    }
+
+    .hide__search__bar {
+      cursor: pointer;
+      @include circleBtn;
+      color: $mainwhite;
+      background-color: $navybluelight;
+    }
+
+    form {
+      gap: 5px;
+      input {
+        font-size: 14px;
+      }
+      button  {
+        font-size: 0.8rem;
+        @include mediaQueryMinMax(300px, 780px) {
+          padding: 0;
+          @include circle(45px);
+          .search__icon {
+            color: $mainwhite !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// Light mode
+body.light {
+  #searchBar {
+    &.mobile__view {
+      background-color: rgba($color: $mainwhite, $alpha: 0.9);
+    }
+    .hide__search__bar {
+      background-color: $darkwhite;
+    }
+    
+    form {
+      background-color: $darkwhite;
+  
+      input,
+      .search__icon {
+        color: $navybluedark;
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+// Variables
+@use "../variables/colors.scss" as *;
+
+// Mixins
+@use "../helpers/mixins.scss" as *;
+
+// Values
+@use "../variables/values.scss" as *;
+
+#repoLoading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 450px));
+  @include mediaQueryMinMax(300px, 1024px) {
+    grid-template-columns: 1fr;
+  }
+  gap: 15px;
+
+  .repo__load {
+    @include column-flex(0, false);
+    justify-content: space-between;
+    background-color: $navybluelittlelight;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: $transitionBG;
+    @include mediaQueryMinMax(300px, 1024px) {
+      width: 100%;
+    }
+    .top,
+    .stats__load {
+      padding: 20px;
+    }
+
+    .name,
+    .line__1,
+    .line__2 {
+      height: $loaderLineHeight;
+      width: 180px;
+      background-color: $navybluelight;
+      transition: $transitionBG;
+      border-radius: $loaderRadius;
+      display: block;
+      margin-bottom: 10px;
+      @include animate-load('dark');
+    }
+
+    .description {
+      .line__1,
+      .line__2 {
+        height: $minLoaderLineHeight;
+      }
+
+      .line__1 {
+        width: 280px;
+      }
+
+      .line__2 {
+        width: 190px;
+      }
+    }
+  }
+
+  .stats__load {
+    display: flex;
+    gap: 22px;
+    border-top: 1px solid $navybluelight;
+
+    span {
+      width: 50px;
+      height: $minLoaderLineHeight;
+      background-color: $navybluelight;
+      display: block;
+      border-radius: 8px;
+      @include animate-load('dark');
+    }
+  }
+}
+
+// light mode
+
+
+body.light {
+  #repoLoading {
+
+  
+    .repo__load {
+      @include column-flex(0, false);
+      justify-content: space-between;
+      background-color: $darkwhite;
+
+  
+      .name,
+      .line__1,
+      .line__2 {
+        background-color: $mainwhite;
+        display: block;
+        margin-bottom: 10px;
+        @include animate-load('light');
+      }
+    }
+  
+    .stats__load {
+      border-top: 1px solid $mainwhite;
+      span {
+        background-color: $mainwhite;
+        @include animate-load('light');
+      }
+    }
+  }
+}
